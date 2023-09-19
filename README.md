@@ -1,2 +1,2 @@
-# GravityBlueInterview
- Interview project for Gravity Blue
+# BlueGravityInterview
+ Interview project for Blue Gravity
