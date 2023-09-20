@@ -6,6 +6,7 @@ using UnityEngine.Events;
 public class PlayerInput : MonoBehaviour
 {
     public UnityEvent onUseKeyPressed;
+    public UnityEvent onMovementKeyPressed;
 
     private float inputX;
     private float inputY;
@@ -20,6 +21,11 @@ public class PlayerInput : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.F))
         {
             onUseKeyPressed?.Invoke();
+        }
+
+        if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.S))
+        {
+            onMovementKeyPressed?.Invoke();
         }
     }
 }

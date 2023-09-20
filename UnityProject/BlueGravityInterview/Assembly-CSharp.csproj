@@ -60,6 +60,13 @@
     <Compile Include="Assets\Scripts\Player\PlayerController.cs" />
     <Compile Include="Assets\Scripts\SortingOrderSetter.cs" />
     <Compile Include="Assets\Scripts\LevelObjects\SoldItem.cs" />
+    <Compile Include="Assets\Scripts\Player\ClothesEquipper.cs" />
+    <Compile Include="Assets\Scripts\ClothesManager.cs" />
+    <Compile Include="Assets\Scripts\ScriptableObjectScripts\ClothingItemSO.cs" />
+    <Compile Include="Assets\Scripts\GameplayManager.cs" />
+    <Compile Include="Assets\Scripts\PurchaseManager.cs" />
+    <Compile Include="Assets\Scripts\ScriptableObjectScripts\PlayerInventorySO.cs" />
+    <Compile Include="Assets\Scripts\CameraController.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

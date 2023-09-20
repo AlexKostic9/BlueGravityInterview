@@ -3,8 +3,25 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class SoldItem : MonoBehaviour
-{
-    [SerializeField] private int cost;
+{    
+    [SerializeField] private Animator animatorComponent;
+    [SerializeField] private SpriteRenderer rendererComponent;
+    [SerializeField] private ClothingItemSO clothingItem;
 
-    public int Cost => cost;
+    public ClothingItemSO ClothingItem => clothingItem;
+
+    private void OnValidate()
+    {
+        rendererComponent.sprite = clothingItem.sprite;
+    }
+
+    public void PlayerApproached()
+    {
+        animatorComponent.SetTrigger("approach");
+    }
+
+    public void PlayerWalkedAway()
+    {
+        animatorComponent.SetTrigger("walkAway");
+    }
 }
