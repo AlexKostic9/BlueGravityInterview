@@ -46,7 +46,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c46cf6e280e0ff948aabbb76d42eab57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnPlayerEntered:
+    m_PersistentCalls:
+      m_Calls: []
+  OnPlayerLeft:
+    m_PersistentCalls:
+      m_Calls: []
   animatorComponent: {fileID: 5610985366176674756}
+  triggerNameOnPlayerApproach: approach
+  triggerNameOnPlayerLeave: walkAway
   rendererComponent: {fileID: 5610985366822884493}
   clothingItem: {fileID: 11400000, guid: aa7612f04a19b3d4f881cff94c675b65, type: 2}
 --- !u!61 &2801700397471836256

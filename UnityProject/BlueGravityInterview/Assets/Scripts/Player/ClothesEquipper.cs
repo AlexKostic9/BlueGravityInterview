@@ -45,4 +45,29 @@ public class ClothesEquipper : MonoBehaviour
             default: break;
         }
     }
+
+    public List<ClothingItemSO> GetEquipedItems()
+    {
+        List<ClothingItemSO> equipped = new List<ClothingItemSO>();
+        if (equippedItemShirt != null) equipped.Add(equippedItemShirt);
+        if (equippedItemPants != null) equipped.Add(equippedItemPants);
+        if (equippedItemHat != null) equipped.Add(equippedItemHat);
+        if (equippedItemGloves != null) equipped.Add(equippedItemGloves);
+        if (equippedItemShoes != null) equipped.Add(equippedItemShoes);
+        return equipped;
+    }
+
+    public int GetEquippedItemsTotalCost()
+    {
+        List<ClothingItemSO> equipped = GetEquipedItems();
+        int totalCost = 0;
+        foreach(ClothingItemSO item in equipped)
+        {
+            if (!GameplayManager.Instance.Inventory.PlayerOwnsItem(item))
+            {
+                totalCost += item.cost;
+            }            
+        }
+        return totalCost;
+    }
 }

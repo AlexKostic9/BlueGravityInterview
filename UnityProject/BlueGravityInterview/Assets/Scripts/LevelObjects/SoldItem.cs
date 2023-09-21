@@ -2,9 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SoldItem : MonoBehaviour
+public class SoldItem : InteractiveObject
 {    
-    [SerializeField] private Animator animatorComponent;
     [SerializeField] private SpriteRenderer rendererComponent;
     [SerializeField] private ClothingItemSO clothingItem;
 
@@ -14,14 +13,10 @@ public class SoldItem : MonoBehaviour
     {
         rendererComponent.sprite = clothingItem.sprite;
     }
-
-    public void PlayerApproached()
+    
+    public override void UseItem()
     {
-        animatorComponent.SetTrigger("approach");
-    }
-
-    public void PlayerWalkedAway()
-    {
-        animatorComponent.SetTrigger("walkAway");
-    }
+        base.UseItem();
+        GameplayManager.Instance.Player.EquipItem(clothingItem);
+    }    
 }

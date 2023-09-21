@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: f2b77b8f28f0b7647bfcfa9ea04b1d13
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Sunday Burger
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 9032cc834bc893b4a9068e20ab8a0326, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
