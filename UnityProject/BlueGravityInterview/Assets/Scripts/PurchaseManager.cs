@@ -5,13 +5,14 @@ using UnityEngine.Events;
 
 public class PurchaseManager : MonoBehaviour
 {
-    public UnityEvent<int> OnPurchaseDone;
+    public UnityEvent<int> OnPurchaseDoneInt;
+    public UnityEvent OnPurchaseDone;
 
-    [SerializeField] private int moneyOnStart;    
+    [SerializeField] private int moneyOnStart;
 
     private int money;
 
-    public int Money => money;
+    public int Money { get => money; set => money = value; }
 
     public void Initialize()
     {
@@ -39,7 +40,8 @@ public class PurchaseManager : MonoBehaviour
         {
             money -= totalCost;
             GameplayManager.Instance.Inventory.AddOwnedItems(itemsToPurchase);
-            OnPurchaseDone?.Invoke(money);
+            OnPurchaseDoneInt?.Invoke(money);
+            OnPurchaseDone?.Invoke();
         }
     }
 }

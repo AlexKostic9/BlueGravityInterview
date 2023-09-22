@@ -10,8 +10,13 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] private Animator panel_UseRegister;
     [SerializeField] private Animator panel_CantAfford;
+    [SerializeField] private Animator panel_EquipItem;
+    [SerializeField] private Animator panel_EquipOwnedItem;
+
     [SerializeField] private TextMeshProUGUI text_UseRegisterCost;
     [SerializeField] private TextMeshProUGUI text_CantAffordTotalCost;
+    [SerializeField] private TextMeshProUGUI text_ItemToEquipCost;
+    [SerializeField] private TextMeshProUGUI text_ItemOwnedName;
 
     public void Initialize(int moneyAmount)
     {
@@ -43,5 +48,26 @@ public class UIManager : MonoBehaviour
     public void HideCantAffordPanel()
     {
         panel_CantAfford.SetBool("active", false);
+    }
+
+    public void ShowEquipItemPanel(int cost)
+    {
+        text_ItemToEquipCost.text = $"Item Cost: {cost}";
+        panel_EquipItem.SetBool("active", true);
+    }
+
+    public void HideItemToEquipPanel()
+    {
+        panel_EquipItem.SetBool("active", false);
+    }
+
+    public void ShowEquipOwnedItemPanel()
+    {        
+        panel_EquipOwnedItem.SetBool("active", true);
+    }
+
+    public void HideEquipOwnedItemPanel()
+    {
+        panel_EquipOwnedItem.SetBool("active", false);
     }
 }

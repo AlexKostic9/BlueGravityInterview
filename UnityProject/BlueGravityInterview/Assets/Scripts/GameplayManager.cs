@@ -12,6 +12,7 @@ public class GameplayManager : MonoBehaviour
     [SerializeField] private UIManager uiManager;
     [SerializeField] private InteractiveObject cashRegister;
     [SerializeField] private PlayerInventorySO playerInventory;
+    [SerializeField] private PlayerDataSO playerData;    
 
     private InteractiveObject activeItem;
 
@@ -32,18 +33,44 @@ public class GameplayManager : MonoBehaviour
     {
         player.Initialize();
         purchase.Initialize();
-        uiManager.Initialize(purchase.Money);
-        purchase.OnPurchaseDone.AddListener(uiManager.SetMoneyAmountText);
+        uiManager.Initialize(purchase.Money);        
+
+        purchase.OnPurchaseDoneInt.AddListener(uiManager.SetMoneyAmountText);
 
         cashRegister.OnPlayerEntered.AddListener(ApproachRegister);        
         cashRegister.OnPlayerLeft.AddListener(LeaveRegister);
         cashRegister.OnItemUsed.AddListener(LeaveRegister);
         cashRegister.OnItemUsed.AddListener(UseCashRegister);
+
+        equipper.OnItemEquipped.AddListener(SaveProgress);
+        purchase.OnPurchaseDone.AddListener(SaveProgress);
+        
+        purchase.Money = playerData.money;
+        player.EquipItem(playerData.equippedShirt);
+        player.EquipItem(playerData.equippedPants);
+        player.EquipItem(playerData.equippedGloves);
+        player.EquipItem(playerData.equippedShoes);
+
+        uiManager.SetMoneyAmountText(purchase.Money);
+    }
+
+    private void SaveProgress()
+    {
+        playerData.SaveData(
+            purchase.Money,
+            equipper.GetEquippedItem(ClothingItemType.Shirt),
+            equipper.GetEquippedItem(ClothingItemType.Pants),
+            equipper.GetEquippedItem(ClothingItemType.Gloves),
+            equipper.GetEquippedItem(ClothingItemType.Shoes));
     }
 
     public void SetActiveItem(InteractiveObject item)
     {
-        activeItem = item;
+        activeItem = item;        
+        if (item.GetType() == typeof(SoldItem))
+        {
+            ShowPopUpForItemEquip(((SoldItem)item).ClothingItem);
+        }        
     }
 
     public void ClearActiveItem(InteractiveObject item)
@@ -51,6 +78,7 @@ public class GameplayManager : MonoBehaviour
         if (activeItem == item)
         {
             activeItem = null;
+            HidePopUpForItemEquip();
         }        
     }
 
@@ -69,7 +97,7 @@ public class GameplayManager : MonoBehaviour
         {
             uiManager.ShowUseRegisterPanel(totalCost);
         }
-        else
+        else if (totalCost > 0)
         {
             uiManager.ShowCantAffordPanel(totalCost);
         }
@@ -84,5 +112,24 @@ public class GameplayManager : MonoBehaviour
     private void UseCashRegister()
     {
         purchase.PurchaseItems(equipper.GetEquipedItems());
+    }
+
+    public void ShowPopUpForItemEquip(ClothingItemSO clothingItem)
+    {
+        HidePopUpForItemEquip();
+        if (Inventory.PlayerOwnsItem(clothingItem))
+        {
+            uiManager.ShowEquipOwnedItemPanel();            
+        }
+        else
+        {
+            uiManager.ShowEquipItemPanel(clothingItem.cost);
+        }
+    }
+
+    public void HidePopUpForItemEquip()
+    {
+        uiManager.HideItemToEquipPanel();
+        uiManager.HideEquipOwnedItemPanel();
     }
 }

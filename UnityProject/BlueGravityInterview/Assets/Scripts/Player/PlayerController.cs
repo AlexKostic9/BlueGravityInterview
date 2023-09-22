@@ -27,7 +27,10 @@ public class PlayerController : MonoBehaviour
 
     public void EquipItem(ClothingItemSO item)
     {
-        equipper.EquipItem(item);        
+        if (item != null)
+        {
+            equipper.EquipItem(item);
+        }        
     }
 
     private void HandlePlayerRotation()

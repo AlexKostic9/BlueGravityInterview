@@ -70,6 +70,7 @@
     <Compile Include="Assets\Scripts\Player\ClothesEquipper.cs" />
     <Compile Include="Assets\Scripts\LevelObjects\Register.cs" />
     <Compile Include="Assets\Scripts\PurchaseManager.cs" />
+    <Compile Include="Assets\Scripts\ScriptableObjectScripts\PlayerDataSO.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

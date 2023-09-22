@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class ClothesEquipper : MonoBehaviour
 {
+    public UnityEvent OnItemEquipped;
+
     [SerializeField] private SpriteRenderer rendererShirt;
     [SerializeField] private SpriteRenderer rendererPants;
     [SerializeField] private SpriteRenderer rendererHat;
@@ -43,6 +46,25 @@ public class ClothesEquipper : MonoBehaviour
                 equippedItemShoes = item;
                 break;
             default: break;
+        }
+        OnItemEquipped?.Invoke();
+    }
+
+    public ClothingItemSO GetEquippedItem(ClothingItemType type)
+    {
+        switch (type)
+        {
+            case ClothingItemType.Shirt:
+                return equippedItemShirt;                
+            case ClothingItemType.Pants:
+                return equippedItemPants;
+            case ClothingItemType.Hat:
+                return equippedItemHat;                
+            case ClothingItemType.Gloves:
+                return equippedItemGloves;
+            case ClothingItemType.Shoes:
+                return equippedItemShoes;
+            default: return null;
         }
     }
 

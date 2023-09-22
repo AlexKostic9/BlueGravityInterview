@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemID: shirtBlue
   itemType: 4
-  cost: 100
+  cost: 300
   sprite: {fileID: 1319713722, guid: 39fda82bcb0465f449472ea09f6c74e8, type: 3}
