@@ -66,9 +66,7 @@
     <Compile Include="Assets\Scripts\Player\PlayerController.cs" />
     <Compile Include="Assets\Scripts\InteractiveObject.cs" />
     <Compile Include="Assets\Scripts\GameplayManager.cs" />
-    <Compile Include="Assets\Scripts\ClothesManager.cs" />
     <Compile Include="Assets\Scripts\Player\ClothesEquipper.cs" />
-    <Compile Include="Assets\Scripts\LevelObjects\Register.cs" />
     <Compile Include="Assets\Scripts\PurchaseManager.cs" />
     <Compile Include="Assets\Scripts\ScriptableObjectScripts\PlayerDataSO.cs" />
   </ItemGroup>

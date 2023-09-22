@@ -6,9 +6,7 @@ public class SortingOrderSetter : MonoBehaviour
 {
     [SerializeField] private SpriteRenderer[] rendererComponents;
     [SerializeField] private int[] initialOrder;
-    [SerializeField] private Transform groundTouchPoint;
-
-    //TODO: Should be global
+    [SerializeField] private Transform groundTouchPoint;    
     [SerializeField] private float unitsPerLayer;
 
     private void OnValidate()
